@@ -12,3 +12,31 @@ const images = [
     alt: 'Group of Horses Running',
   },
 ];
+
+const imageEl = document.querySelector('.gallery');
+
+//Вариант 1
+// const createImage = image => (({ url, alt }) => { 
+//   return image.insertAdjacentHTML("beforeend",
+//     `<li class="style_item"><img src="${url}" alt="${alt}" width ="240"></li>`);
+//   });
+// };
+// createImage(imageEl);
+
+
+
+
+//Вариант 2
+const createImage = ({url, alt}) => {
+  return `
+    <li class="style_item">
+    <img
+    src="${url}" 
+    alt="${alt}" 
+    width ="240">
+    </li>
+  `;
+};
+
+const image = images.map(createImage).join('');
+imageEl.insertAdjacentHTML('beforeend', image);
