@@ -1,0 +1,32 @@
+- name: Test Block
+  hosts: all
+  become: true
+
+  vars:
+
+
+  tasks:
+
+  - block:
+
+    - name: Install Package
+       apt:
+          pkg:
+            - tree
+            - nmon
+            - htop
+          state: present
+
+    - name: Create folder
+        file:
+            path: /srv/folder1
+            state: directory
+  
+  when: ansible_hostname ==  "web2"
+
+    - name: Copy file
+        copy: 
+            src: file
+            dest: /var/www/
+
+  when: ansible_hostname ==  "web2"
