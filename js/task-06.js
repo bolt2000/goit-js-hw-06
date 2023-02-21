@@ -7,9 +7,14 @@ const maxLength = symbolEnter.getAttribute('data-length');
 
 symbolEnter.addEventListener('blur', onInputSymbol);
 
-function onInputSymbol() {
-    return symbolEnter.value.length == maxLength? 
-       symbolEnter.classList.add('valid') : symbolEnter.classList.add('invalid');
+function onInputSymbol () {
+    if (symbolEnter.value.length == maxLength) {
+        symbolEnter.classList.add('valid');
+        symbolEnter.classList.remove('invalid');
+    } else if (symbolEnter.value.length !== maxLength) {
+        symbolEnter.classList.add('invalid');
+         symbolEnter.classList.remove('valid');
+    };
    
        
 };
